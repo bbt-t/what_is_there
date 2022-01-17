@@ -1,0 +1,13 @@
+.cache
+.gitignore
+__pycache__
+.venv
+/venv
+.github
+*.log
+README.md
+README_en.md
+LICENSE
+.idea
+.git
+.pytest_cache
