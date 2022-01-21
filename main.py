@@ -1,17 +1,24 @@
+from logging import getLogger
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from config import req_easyocr
-from easyocr.easyocr_main import process_image
+from easyocr_path.easyocr_main import process_image
 
 
+logger = getLogger('__name__')
 app = FastAPI()
 
 
 class UrlImage(BaseModel):
-    url_img: str
+    imageurl: str
 
 
-@app.post(req_easyocr)
-async def root(image_file: UrlImage):
-    return await process_image(img=image_file.url_img)
+@app.post('/bot-ocr/')
+async def root(incoming_info: UrlImage) -> tuple:
+    """
+    Accept image-url for processing
+    :param incoming_info: post-data (json)
+    :return: result in tuple
+    """
+    return await process_image(img=incoming_info.imageurl)
