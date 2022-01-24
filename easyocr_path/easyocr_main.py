@@ -3,9 +3,7 @@ from easyocr import Reader
 from main import logger
 
 
-
-
-async def process_image(img: str) -> tuple | None:
+def process_image(img: str) -> tuple | None:
     """
     Recognize text (ru/en) in an image.
     :param img: link to img-object
