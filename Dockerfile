@@ -2,6 +2,8 @@ FROM pytorch/pytorch
 
 WORKDIR /app/EasyOCR
 
+HEALTHCHECK --interval=5m --timeout=10s CMD curl -f http://localhost/80 || exit 1
+
 ENV PIP_NO_CACHE_DIR=true \
     PYTHONDONTWRITEBYTECODE=true
 
